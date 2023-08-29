@@ -33,7 +33,7 @@ public class Driver {
                     bread.raiseQty(sc.nextInt());
                     break;
                 case see_inventory:
-                    System.out.println("Milk: " + milk.toString() + "\nBread: " + bread.toString());
+                    System.out.println("Milk: " + milk + "\nBread: " + bread);
                     break;
                 default:
                     break;
@@ -41,6 +41,7 @@ public class Driver {
         } while (choice != exitValue);
 
     }
+
     static final int sold_one_milk = 1;
     static final int sold_one_bread = 2;
     static final int change_price_of_milk = 3;
@@ -75,16 +76,17 @@ public class Driver {
         } while (gotError);
         return y;
     }
+
     public static String mainMenu = """
-                                
-                1. Sold One Milk
-                2. Sold One Bread
-                3. Change price of Milk
-                4. Change price of Bread
-                5. Add Milk to Inventory
-                6. Add Bread to Inventory
-                7. See Inventory
-                8. Quit
-                """;
-    }
+                            
+            1. Sold One Milk
+            2. Sold One Bread
+            3. Change price of Milk
+            4. Change price of Bread
+            5. Add Milk to Inventory
+            6. Add Bread to Inventory
+            7. See Inventory
+            8. Quit
+            """;
+
 }
