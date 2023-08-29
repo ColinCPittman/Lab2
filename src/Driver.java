@@ -7,42 +7,52 @@ public class Driver {
         StockItem milk = new StockItem("1 Gallon of Milk", 3.60f, 15);
         StockItem bread = new StockItem("1 Loaf of Bread", 1.98f, 30);
         do {
-            System.out.print(getMainMenu());
-            choice = getMenuChoice(1, 7, 8, "Choice: ");
+            System.out.print(mainMenu);
+            choice = getMenuChoice(fromOne, toSeven, exitValue, "Choice: ");
             switch (choice) {
-                case 1: //sold one milk
+                case sold_one_milk:
                     milk.lowerQty(1);
                     break;
-                case 2: //sold one bread
+                case sold_one_bread:
                     bread.lowerQty(1);
                     break;
-                case 3: //change price of milk
+                case change_price_of_milk:
                     System.out.println("New price of milk: ");
                     milk.setPrice(sc.nextFloat());
                     break;
-                case 4: //change price of bread
+                case change_price_of_bread:
                     System.out.println("New price of bread: ");
                     bread.setPrice(sc.nextFloat());
                     break;
-                case 5: //add milk to inventory
+                case add_milk_to_inventory:
                     System.out.println("Enter qty of milk to add to inventory: ");
                     milk.raiseQty(sc.nextInt());
                     break;
-                case 6: //add bread to inventory
+                case add_bread_to_inventory:
                     System.out.println("Enter qty of bread to add to inventory: ");
                     bread.raiseQty(sc.nextInt());
                     break;
-                case 7: //see inventory
+                case see_inventory:
                     System.out.println("Milk: " + milk.toString() + "\nBread: " + bread.toString());
                     break;
                 default:
                     break;
             }
-        } while (choice != 8);
+        } while (choice != exitValue);
 
     }
+    static final int sold_one_milk = 1;
+    static final int sold_one_bread = 2;
+    static final int change_price_of_milk = 3;
+    static final int change_price_of_bread = 4;
+    static final int add_milk_to_inventory = 5;
+    static final int add_bread_to_inventory = 6;
+    static final int see_inventory = 7;
+    static final int exitValue = 8;
+    static final int fromOne = 1;
+    static final int toSeven = 7;
 
-    public static int getMenuChoice(int lowValue, int highValue, int exitValue, String choicePrompt) { //method getting an int between starting and ending value (both inclusive).
+    public static int getMenuChoice(int lowValue, int highValue, int exitValue, String choicePrompt) {
         Scanner sc = new Scanner(System.in);
         boolean gotError = false;
         int y = exitValue;
@@ -65,8 +75,7 @@ public class Driver {
         } while (gotError);
         return y;
     }
-    public static String getMainMenu() {
-        return """
+    public static String mainMenu = """
                                 
                 1. Sold One Milk
                 2. Sold One Bread
